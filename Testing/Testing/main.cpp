@@ -8,7 +8,7 @@
 
 
 const unsigned short PORT = 5000;
-const std::string IPADDRESS("192.168.0.100");//change to suit your needs
+const std::string IPADDRESS(sf::IpAddress::getLocalAddress().toString());//change to suit your needs
 
 std::string msgSend;
 
