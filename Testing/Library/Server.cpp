@@ -4,7 +4,7 @@
 
 Server::Server()
 {
-
+	listenerRun = true;
 	
 }
 
@@ -13,8 +13,11 @@ Server::~Server()
 {
 }
 
-void Server::ServerStuff(short PORT)
+void Server::ServerStuff()
 {
+	
+	while (listenerRun)
+	{
 		sf::TcpListener listener;
 		listener.listen(PORT);
 
@@ -23,5 +26,6 @@ void Server::ServerStuff(short PORT)
 		sockets.push_back(tcpsocket);
 		listener.accept(*tcpsocket);
 		std::cout << "New client connected: " << tcpsocket->getRemoteAddress() << std::endl;
-		
+
+	}
 }
