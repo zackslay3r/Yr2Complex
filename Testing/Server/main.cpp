@@ -11,7 +11,7 @@ int main()
 	sf::Thread* thread = 0;
 
 
-	while (validPort = false)
+	while (validPort == false)
 	{
 		std::cout << "Please put a number in between 1 and 5000 for a port number.";
 		short tempShort;

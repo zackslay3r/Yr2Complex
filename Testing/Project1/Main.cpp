@@ -20,7 +20,7 @@ int main()
 			}
 			else
 			{
-				std::cout << "COnnection failed. Invalid Port.";
+				std::cout << "Connection failed. Invalid Port.";
 			}
 			
 		}
