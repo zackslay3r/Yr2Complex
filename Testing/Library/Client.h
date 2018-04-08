@@ -7,7 +7,12 @@ class Client
 public:
 	Client();
 	~Client();
-	bool ClientStuff(std::string IPADDRESS, short PORT);
+	bool ClientConnection(std::string IPADDRESS, short PORT);
+	void ClientChat();
+	void getInput();
 	sf::TcpSocket socket;
+	bool isConnected;
+	sf::Mutex ClientMutex;
+	bool quit = false;
 };
 

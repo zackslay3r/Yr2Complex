@@ -13,7 +13,7 @@ int main()
 		std::cin >> SelectedPortNumber;
 		if (SelectedPortNumber > 1 || SelectedPortNumber < 5000)
 		{
-			if (newClient->ClientStuff(sf::IpAddress::getLocalAddress().toString(), SelectedPortNumber))
+			if (newClient->ClientConnection(sf::IpAddress::getLocalAddress().toString(), SelectedPortNumber))
 			{
 				validPort == true;
 				std::cout << "Connected established.";
