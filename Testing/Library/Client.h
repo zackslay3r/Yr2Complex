@@ -14,5 +14,7 @@ public:
 	bool isConnected;
 	sf::Mutex ClientMutex;
 	bool quit = false;
+
+	std::string msgSend;
 };
 
