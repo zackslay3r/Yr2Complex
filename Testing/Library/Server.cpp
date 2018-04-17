@@ -29,3 +29,11 @@ void Server::ServerStuff()
 
 	}
 }
+
+void Server::RecieveMessages()
+{
+	char buffer[1024];
+	std::size_t received = 0;
+	socket.receive(buffer, sizeof(buffer), received);
+	std::cout << "The client said: " << buffer << std::endl;
+}

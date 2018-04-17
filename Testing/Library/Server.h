@@ -9,6 +9,7 @@ public:
 	Server();
 	~Server();
 	void ServerStuff();
+	void RecieveMessages();
 	short PORT = 2501;
 	// an atomic is a template type that no matter if two threads are accessing, it will sort it out.
 	std::atomic<bool> listenerRun;

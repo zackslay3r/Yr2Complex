@@ -7,7 +7,7 @@ int main()
 	short SelectedPortNumber;
 	Client* newClient = new Client;
 
-	while (!validPort)
+	while (validPort == false)
 	{
 		std::cout << "Insert a number between 1-5000 as the port to connect to.";
 		std::cin >> SelectedPortNumber;
@@ -15,7 +15,7 @@ int main()
 		{
 			if (newClient->ClientConnection(sf::IpAddress::getLocalAddress().toString(), SelectedPortNumber))
 			{
-				validPort == true;
+				validPort = true;
 				std::cout << "Connected established.";
 			}
 			else
@@ -23,6 +23,14 @@ int main()
 				std::cout << "Connection failed. Invalid Port.";
 			}
 			
+		}
+	
+	}
+	if (validPort == true)
+	{
+		while (validPort == true)
+		{
+			newClient->getInput();
 		}
 	
 	}

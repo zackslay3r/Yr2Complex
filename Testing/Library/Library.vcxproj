@@ -158,10 +158,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Algorthims.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Server.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorthims.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>

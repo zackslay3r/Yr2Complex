@@ -22,7 +22,6 @@ bool Client::ClientConnection( std::string IPADDRESS, short PORT)
 		if (socket.connect(IPADDRESS, PORT) == sf::Socket::Done)
 		{
 			std::cout << "Connected\n";
-			system("pause");
 			isConnected = true;
 			return true;
 		}
@@ -32,7 +31,7 @@ bool Client::ClientConnection( std::string IPADDRESS, short PORT)
 
 void Client::ClientChat()
 {
-	while()
+
 }
 
 void Client::getInput()
@@ -46,7 +45,8 @@ void Client::getInput()
 	}
 	ClientMutex.lock();
 	msgSend = s;
-	globalMutex.unlock();
+	socket.send(s.c_str(), s.size() + 1);
+	ClientMutex.unlock();
 }
 
 
