@@ -47,45 +47,56 @@ void Server::ServerStuff()
 				
 				sf::TcpSocket* socket;
 				socket = *iter;
-				//if (!selector.isReady(*socket))
-				//{
-				//	continue;
+			
 				
-				//}
 				
-				buffer.clear();
-				recievedPacket.clear();
-				status = socket->receive(recievedPacket);
-				bool deleted = false;
-				//socket->receive(recievedPacket);
 
-				//socket->receive(buffer, sizeof(buffer), received);
-
-
-				if (status == sf::Socket::Status::Done)
-				{
-					if ((recievedPacket >> buffer) && !buffer.empty())
+					buffer.clear();
+					recievedPacket.clear();	
+					
+			/*		if (selector.isReady(*socket) == false)
 					{
-						std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
+					continue;
+					}*/
+					
+					
+					
+					status = socket->receive(recievedPacket);
+					bool deleted = false;
+					
+					
+					
+					
+					//socket->receive(recievedPacket);
 
+					//socket->receive(buffer, sizeof(buffer), received);
+
+
+					if (status == sf::Socket::Status::Done)
+					{
+						if ((recievedPacket >> buffer) && !buffer.empty())
+						{
+							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
+
+						}
 					}
-				}
-				else if (status == sf::Socket::Status::Disconnected)
-				{
-					socket->disconnect();
-					iter = sockets.erase(iter);
-					selector.remove(*socket);
-					deleted = true;
-				}
-				else if (status == sf::Socket::Status::Error)
-				{
-					//			std::cout << "Confused" << std::endl;
-				}
+					else if (status == sf::Socket::Status::Disconnected)
+					{
+						socket->disconnect();
+						iter = sockets.erase(iter);
+						selector.remove(*socket);
+						deleted = true;
+					}
+					else if (status == sf::Socket::Status::Error)
+					{
+						//			std::cout << "Confused" << std::endl;
+					}
 
-				if (deleted == false)
-				{
-					iter++;
-				}
+					if (deleted == false)
+					{
+						iter++;
+					}
+				
 			}
 
 

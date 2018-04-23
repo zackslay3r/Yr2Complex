@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include "Gene.h"
 class Algorthims
 {
 public:
@@ -9,7 +11,7 @@ public:
 	
 
 	void PopulationCreator();
-
+	int CalcFitness(Gene* gene);
 
 	/// Make sure for when these algorthims are created you!
 	/// 1. Have a inital population.
@@ -17,10 +19,10 @@ public:
 	/// 3. Selection.
 	/// 4. CrossOver.
 	/// 5. Mutation.
+	std::vector<Gene*> Population;
+	std::vector<Gene*> Solution;
 
-
-
-
+	int popCount = 20;
 	~Algorthims();
 };
 
