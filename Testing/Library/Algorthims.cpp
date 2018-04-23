@@ -6,6 +6,12 @@ Algorthims::Algorthims()
 {
 }
 
+void Algorthims::PopulationCreator()
+{
+}
+
+
+
 
 Algorthims::~Algorthims()
 {

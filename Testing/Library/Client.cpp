@@ -36,17 +36,26 @@ void Client::ClientChat()
 
 void Client::getInput()
 {
-	std::string s;
-	std::cout << "\nEnter \"exit\" to quit or message to send: ";
-	getline(std::cin, s);
-	if (s == "exit")
+	while (quit == false)
 	{
-		quit = true;
+		std::string s;
+		sf::Packet sendMessage;
+		std::cout << "\nEnter \"exit\" to quit or message to send: ";
+		getline(std::cin, s);
+		sendMessage << s;
+		if (s == "exit")
+		{
+			quit = true;
+		}
+		ClientMutex.lock();
+		msgSend = s;
+		socket.send(sendMessage);
+		ClientMutex.unlock();
 	}
-	ClientMutex.lock();
-	msgSend = s;
-	socket.send(s.c_str(), s.size() + 1);
-	ClientMutex.unlock();
+	if (quit == true)
+	{
+		socket.disconnect();
+	}
 }
 
 
