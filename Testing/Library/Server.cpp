@@ -47,11 +47,11 @@ void Server::ServerStuff()
 				
 				sf::TcpSocket* socket;
 				socket = *iter;
-				if (!selector.isReady(*socket))
-				{
-					continue;
+				//if (!selector.isReady(*socket))
+				//{
+				//	continue;
 				
-				}
+				//}
 				
 				buffer.clear();
 				recievedPacket.clear();
