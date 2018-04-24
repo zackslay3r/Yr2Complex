@@ -179,7 +179,7 @@ void Algorthims::FindSolution()
 		ResultFitness = Parents.at(0).Fitness;
 		ResultString = Parents.at(0).DNA.c_str();
 
-		std::cout << "Generation : " << generations << " Highest Fitness : " << Parents.at(0).Fitness << std::endl << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
+		std::cout << "Generation : " << generations << " Correct characters: " << Parents.at(0).Fitness / 10 << " Out of: " << DNASolution.size() << std::endl << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
 		
 	}
 	std::cout << "Generation " << generations << " Evolved to the full sequence. " << std::endl;

@@ -1,4 +1,12 @@
 ﻿  Server.cpp
+  Gene.cpp
+  Client.cpp
+  Algorthims.cpp
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\algorthims.cpp(9): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\algorthims.cpp(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\algorthims.cpp(48): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\algorthims.cpp(107): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
 gdi32.lib(GDI32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in winmm.lib(WINMM.dll); second definition ignored
 gdi32.lib(GDI32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 ws2_32.lib(WS2_32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in winmm.lib(WINMM.dll); second definition ignored
@@ -23,4 +31,4 @@ uuid.lib(propkeys.obj) : warning LNK4221: This object file does not define any p
 uuid.lib(msp_interface.obj) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 odbc32.lib(ODBC32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in winmm.lib(WINMM.dll); second definition ignored
 odbc32.lib(ODBC32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-  Library.vcxproj -> C:\Users\s171842\Documents\GitHub\Yr2Complex\Yr2Complex\Testing\x64\Debug\Library_DEBUG.lib
+  Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\Library_DEBUG.lib

@@ -1,8 +1,5 @@
 ﻿  Main.cpp
-Main.cpp(18): warning C4553: '==': operator has no effect; did you intend '='?
   Generating code
-  All 51 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 241 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-Main.obj : warning LNK4049: locally defined symbol ?toString@IpAddress@sf@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ (public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl sf::IpAddress::toString(void)const ) imported
-Main.obj : warning LNK4049: locally defined symbol ?getLocalAddress@IpAddress@sf@@SA?AV12@XZ (public: static class sf::IpAddress __cdecl sf::IpAddress::getLocalAddress(void)) imported
-  Project1.vcxproj -> C:\Users\s171842\Documents\GitHub\Yr2Complex\Yr2Complex\Testing\x64\Release\Client.exe
+  Project1.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Client.exe

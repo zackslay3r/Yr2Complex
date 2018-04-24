@@ -1,4 +1,10 @@
-﻿  Client.cpp
+﻿  Algorthims.cpp
+Algorthims.cpp(9): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+Algorthims.cpp(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+Algorthims.cpp(48): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+Algorthims.cpp(107): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Client.cpp
+  Gene.cpp
   Server.cpp
 winmm.lib(WINMM.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in opengl32.lib(OPENGL32.dll); second definition ignored
 gdi32.lib(GDI32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in opengl32.lib(OPENGL32.dll); second definition ignored
@@ -12,4 +18,4 @@ shell32.lib(SHELL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already def
 ole32.lib(ole32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in opengl32.lib(OPENGL32.dll); second definition ignored
 oleaut32.lib(OLEAUT32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in opengl32.lib(OPENGL32.dll); second definition ignored
 odbc32.lib(ODBC32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in opengl32.lib(OPENGL32.dll); second definition ignored
-  Library.vcxproj -> C:\Users\s171842\Documents\GitHub\Yr2Complex\Yr2Complex\Testing\x64\Release\Library.lib
+  Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Library.lib

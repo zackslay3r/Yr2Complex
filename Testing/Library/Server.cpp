@@ -101,7 +101,7 @@ void Server::ServerStuff()
 							//}
 
 							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
-
+							buffer.clear();
 						}
 					}
 					else if (status == sf::Socket::Status::Disconnected)

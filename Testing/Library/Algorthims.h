@@ -9,7 +9,7 @@ struct Member
 };
 struct Population
 {
-	std::vector<Member> Members = std::vector<Member>(750);
+	std::vector<Member> Members = std::vector<Member>(375);
 };
 
 class Algorthims
@@ -22,7 +22,7 @@ public:
 	bool SolutionFound = false;
 	
 	// USed for the mutation of genes. 
-	int MutationRate = 10;
+	int MutationRate = 25;
 	
 	Population Pop;
 
