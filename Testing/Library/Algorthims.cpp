@@ -93,9 +93,11 @@ void Algorthims::ParentSelection()
 
 void Algorthims::FindSolution()
 {
+
 	// While the solution was not found
 	while (!SolutionFound)
 	{
+		
 		// increment the generation ticks.
 		generations++;
 
@@ -118,10 +120,11 @@ void Algorthims::FindSolution()
 		}
 
 		ParentSelection();
-		std::cout << "Generation : " << generations << "Highest Fitness : " << Parents.at(0).Fitness << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
+		system("cls");
+		std::cout << "Generation : " << generations << " Highest Fitness : " << Parents.at(0).Fitness << std::endl << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
 
 	}
-	std::cout << "Generation " << generations << "Evolved to the full sequence." << std::endl;
+	std::cout << "Generation " << generations << " Evolved to the full sequence. " << std::endl;
 	system("pause");
 
 }

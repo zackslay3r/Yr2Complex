@@ -9,20 +9,20 @@ struct Member
 };
 struct Population
 {
-	std::vector<Member> Members = std::vector<Member>(5000);
+	std::vector<Member> Members = std::vector<Member>(750);
 };
 
 class Algorthims
 {
 public:
 	// This is the solution we are trying to find with our genetic algorthims.
-	std::string DNASolution = "Hello there fam.";
+	std::string DNASolution = "cupcakes are cute and evil and squishy";
 	
 	// A bool to check if the solution has been found.
 	bool SolutionFound = false;
 	
 	// USed for the mutation of genes. 
-	int MutationRate = 5;
+	int MutationRate = 10;
 	
 	Population Pop;
 

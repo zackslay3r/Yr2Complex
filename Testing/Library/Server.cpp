@@ -18,6 +18,7 @@ void Server::ServerStuff()
 	sf::TcpListener listener;
 	listener.listen(PORT);
 	selector.add(listener);
+	std::cout << "The servers IP is " << sf::IpAddress::getLocalAddress().toString() << std::endl;
 	while (listenerRun)
 	{
 		if (selector.wait(sf::Time(sf::milliseconds(1))))

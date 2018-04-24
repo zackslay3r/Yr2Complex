@@ -38,6 +38,7 @@ void Client::getInput()
 {
 	while (quit == false)
 	{
+		
 		std::string s;
 		sf::Packet sendMessage;
 		std::cout << "\nEnter \"exit\" to quit or message to send: ";
