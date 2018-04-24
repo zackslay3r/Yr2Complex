@@ -1,9 +1,35 @@
 #pragma once
 #include <vector>
-#include "Gene.h"
+#include "Gene.h"	
+struct Member
+{
+	std::string DNA;
+	int Fitness;
+
+};
+struct Population
+{
+	std::vector<Member> Members = std::vector<Member>(5000);
+};
+
 class Algorthims
 {
 public:
+	// This is the solution we are trying to find with our genetic algorthims.
+	std::string DNASolution = "Hello there fam.";
+	
+	// A bool to check if the solution has been found.
+	bool SolutionFound = false;
+	
+	// USed for the mutation of genes. 
+	int MutationRate = 5;
+	
+	Population Pop;
+
+
+
+	
+
 	Algorthims();
 
 	//// MAIN PROBLEM 
@@ -11,8 +37,12 @@ public:
 	
 
 	void PopulationCreator();
-	int CalcFitness(Gene* gene);
+	//int CalcFitness(Gene* gene);
+	void CalcFitness();
+	void ParentSelection();
 
+
+	void FindSolution();
 	/// Make sure for when these algorthims are created you!
 	/// 1. Have a inital population.
 	/// 2. Fitness Function.
@@ -21,8 +51,10 @@ public:
 	/// 5. Mutation.
 	std::vector<Gene*> Population;
 	std::vector<Gene*> Solution;
-
+	std::vector<Member> Parents;
 	int popCount = 20;
+	int currentFitness = 0;
+	int generations;
 	~Algorthims();
 };
 

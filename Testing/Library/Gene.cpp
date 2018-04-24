@@ -10,7 +10,7 @@ Gene::Gene()
 Gene::Gene(int value, int fitness)
 {
 	Value = value;
-	Fitness = fitness;
+	//Fitness = fitness;
 }
 
 Gene::~Gene()

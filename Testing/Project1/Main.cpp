@@ -39,7 +39,9 @@ int main()
 	//}
 
 	
-	algorthimData.PopulationCreator();
-	
+	//algorthimData.PopulationCreator();
+	//algorthimData.CalcFitness();
+	algorthimData.FindSolution();
+
 	return 0;
 }
