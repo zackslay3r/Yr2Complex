@@ -43,6 +43,7 @@ void Server::ServerStuff()
 			//char buffer[1024];
 			sf::Packet recievedPacket;
 			std::string buffer;
+			buffer.resize(100);
 			std::size_t received = 0;
 
 			sf::Socket::Status status;
