@@ -41,21 +41,27 @@ void Client::getInput()
 		
 		std::string s;
 		sf::Packet sendMessage;
-		std::cout << "\nEnter \"exit\" to quit or message to send: ";
+		std::cout << "\nEnter \"exit\" to quit or message to send: " << std::endl;
 		getline(std::cin, s);
-		sendMessage << s;
+		
 		if (s == "exit")
 		{
 			quit = true;
 		}
-		ClientMutex.lock();
-		msgSend = s;
-		socket.send(sendMessage);
-		ClientMutex.unlock();
+		else
+		{
+			sendMessage << s;
+			ClientMutex.lock();
+			msgSend = s;
+			socket.send(sendMessage);
+			ClientMutex.unlock();
+		}
 	}
 	if (quit == true)
 	{
 		socket.disconnect();
+		exit(0);
+		
 	}
 }
 

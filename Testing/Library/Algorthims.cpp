@@ -25,6 +25,7 @@ Algorthims::Algorthims()
 	}
 	
 	generations = 0;
+	SolutionFound = false;
 }
 
 void Algorthims::PopulationCreator()

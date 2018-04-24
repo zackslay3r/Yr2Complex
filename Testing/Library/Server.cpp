@@ -5,7 +5,7 @@
 Server::Server()
 {
 	listenerRun = true;
-	
+	algorthimManagement = new Algorthims();
 }
 
 
@@ -16,17 +16,18 @@ Server::~Server()
 void Server::ServerStuff()
 {
 	sf::TcpListener listener;
+	listener.setBlocking(false);
 	listener.listen(PORT);
 	selector.add(listener);
 	std::cout << "The servers IP is " << sf::IpAddress::getLocalAddress().toString() << std::endl;
 	while (listenerRun)
 	{
-		if (selector.wait(sf::Time(sf::milliseconds(1))))
+		if (true /*selector.wait(sf::Time(sf::milliseconds(1)))*/)
 		{
-			if (selector.isReady(listener))
-			{
+			//if (selector.isReady(listener))
+			//{
 				sf::TcpSocket* tcpsocket = new sf::TcpSocket();
-				
+				tcpsocket->setBlocking(false);
 				if(listener.accept(*tcpsocket) == sf::TcpSocket::Status::Done)
 				{
 				//socket gets assigned here.
@@ -34,7 +35,11 @@ void Server::ServerStuff()
 				selector.add(*tcpsocket);
 				std::cout << "New client connected: " << tcpsocket->getRemoteAddress() << std::endl;
 				}
-			}
+				else
+				{
+					delete tcpsocket;
+				}
+			//}
 			//char buffer[1024];
 			sf::Packet recievedPacket;
 			std::string buffer;
@@ -77,15 +82,23 @@ void Server::ServerStuff()
 					{
 						if ((recievedPacket >> buffer) && !buffer.empty())
 						{
+							if (buffer == "solve")
+							{
+								algorthimManagement->FindSolution();
+								algorthimManagement = new Algorthims();
+							}
+
 							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
 
 						}
 					}
 					else if (status == sf::Socket::Status::Disconnected)
 					{
+						std::cout << "Disconnected user." << socket->getRemoteAddress().toString() << std::endl;
 						socket->disconnect();
 						iter = sockets.erase(iter);
 						selector.remove(*socket);
+
 						deleted = true;
 					}
 					else if (status == sf::Socket::Status::Error)

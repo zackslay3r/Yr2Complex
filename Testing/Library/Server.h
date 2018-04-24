@@ -3,6 +3,7 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 #include <atomic>
+#include "Algorthims.h"
 class Server
 {
 public:
@@ -15,6 +16,7 @@ public:
 	std::atomic<bool> listenerRun;
 	
 	sf::SocketSelector selector;
+	Algorthims* algorthimManagement;
 protected:
 	
 
