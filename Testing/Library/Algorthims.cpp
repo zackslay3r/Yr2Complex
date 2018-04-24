@@ -5,12 +5,46 @@
 
 Algorthims::Algorthims()
 {
-	// Create the number based solution.
-	/*for (int i = 0; i < popCount; i++)
+	DNASolution = "cupcakes are cute and evil and squishy";
+	srand(time(NULL));
+
+	for (int i = 0; i < Pop.Members.size(); i++)
 	{
-		Solution.push_back(new Gene(0,3));
-	}*/
-	
+		Pop.Members.at(i).DNA.resize(DNASolution.size());
+
+		for (int j = 0; j < DNASolution.size(); j++)
+		{
+			Pop.Members.at(i).DNA.at(j) = (unsigned char)rand() % 96 + 32;
+		}
+		Pop.Members.at(i).Fitness = 0;
+	}
+
+	generations = 0;
+	SolutionFound = false;
+}
+
+Algorthims::Algorthims(std::string Solution)
+{
+	DNASolution = Solution;
+	srand(time(NULL));
+
+	for (int i = 0; i < Pop.Members.size(); i++)
+	{
+		Pop.Members.at(i).DNA.resize(DNASolution.size());
+
+		for (int j = 0; j < DNASolution.size(); j++)
+		{
+			Pop.Members.at(i).DNA.at(j) = (unsigned char)rand() % 96 + 32;
+		}
+		Pop.Members.at(i).Fitness = 0;
+	}
+
+	generations = 0;
+	SolutionFound = false;
+}
+
+void Algorthims::Setup()
+{
 	srand(time(NULL));
 
 	for (int i = 0; i < Pop.Members.size(); i++)
@@ -24,6 +58,25 @@ Algorthims::Algorthims()
 		Pop.Members.at(i).Fitness = 0;
 	}
 	
+	generations = 0;
+	SolutionFound = false;
+}
+
+void Algorthims::SetString(std::string string)
+{
+	DNASolution = string;
+
+	for (int i = 0; i < Pop.Members.size(); i++)
+	{
+		Pop.Members.at(i).DNA.resize(DNASolution.size());
+
+		for (int j = 0; j < DNASolution.size(); j++)
+		{
+			Pop.Members.at(i).DNA.at(j) = (unsigned char)rand() % 96 + 32;
+		}
+		Pop.Members.at(i).Fitness = 0;
+	}
+
 	generations = 0;
 	SolutionFound = false;
 }

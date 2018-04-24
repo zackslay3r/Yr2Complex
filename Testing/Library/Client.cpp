@@ -52,11 +52,26 @@ void Client::getInput()
 		{
 			if (s == "solve")
 			{
-				sendMessage << s;
-				ClientMutex.lock();
-				msgSend = s;
-				socket.send(sendMessage);
-				ClientMutex.unlock();
+				std::string SolutionDNA;
+				char input[100];
+
+				std::cout << "Input a sentence for me to solve with genetic algorithims." << std::endl;
+				std::cin.ignore();
+				std::cin.getline(input, 50);
+				
+					SolutionDNA = std::string(input);
+					//sendMessage << s;
+					sendMessage << SolutionDNA;
+					ClientMutex.lock();
+					//msgSend = s;
+					socket.send(sendMessage);
+					ClientMutex.unlock();
+				
+			
+				
+				
+				
+
 
 			sf::Packet AlgorthimResults;
 			sf::Socket::Status ClientStatus;

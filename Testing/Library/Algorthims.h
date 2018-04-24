@@ -16,7 +16,7 @@ class Algorthims
 {
 public:
 	// This is the solution we are trying to find with our genetic algorthims.
-	std::string DNASolution = "cupcakes are cute and evil and squishy";
+	std::string DNASolution;
 	
 	// A bool to check if the solution has been found.
 	bool SolutionFound = false;
@@ -31,10 +31,14 @@ public:
 	
 
 	Algorthims();
+	Algorthims(std::string Solution);
 
+
+	void Setup();
 	//// MAIN PROBLEM 
 	//// have a random population of 10 0's/1's/2's and have them all be equal to 0.
 	
+	void SetString(std::string string);
 
 	void PopulationCreator();
 	//int CalcFitness(Gene* gene);

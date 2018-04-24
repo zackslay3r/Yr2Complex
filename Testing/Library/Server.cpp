@@ -82,8 +82,13 @@ void Server::ServerStuff()
 					{
 						if ((recievedPacket >> buffer) && !buffer.empty())
 						{
-							if (buffer == "solve")
-							{
+							//if (buffer == "solve")
+							//{
+								//buffer.clear();
+								//std::string newStringToSolve;
+								//recievedPacket >> newStringToSolve;
+								algorthimManagement = new Algorthims(buffer);
+								//algorthimManagement->SetString(buffer);
 								algorthimManagement->FindSolution();
 								sf::Packet sendToClient;
 								sendToClient << algorthimManagement->ResultGenerations;
@@ -91,8 +96,8 @@ void Server::ServerStuff()
 								sendToClient << algorthimManagement->ResultString;
 								socket->send(sendToClient);
 								delete algorthimManagement;
-								algorthimManagement = new Algorthims();
-							}
+								
+							//}
 
 							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
 
