@@ -42,20 +42,47 @@ void Client::getInput()
 		std::string s;
 		sf::Packet sendMessage;
 		std::cout << "\nEnter \"exit\" to quit or message to send: " << std::endl;
-		getline(std::cin, s);
-		
+		//getline(std::cin, s);
+		std::cin >> s;
 		if (s == "exit")
 		{
 			quit = true;
 		}
-		else
+		else 
 		{
-			sendMessage << s;
-			ClientMutex.lock();
-			msgSend = s;
-			socket.send(sendMessage);
-			ClientMutex.unlock();
+			if (s == "solve")
+			{
+				sendMessage << s;
+				ClientMutex.lock();
+				msgSend = s;
+				socket.send(sendMessage);
+				ClientMutex.unlock();
+
+			sf::Packet AlgorthimResults;
+			sf::Socket::Status ClientStatus;
+
+			while (true)
+			{
+				ClientStatus = socket.receive(AlgorthimResults);
+
+				if (ClientStatus == sf::Socket::Status::Done)
+				{
+					int generations;
+					int fitness;
+					std::string DNA;
+
+					AlgorthimResults >> generations;
+					AlgorthimResults >> fitness;
+					AlgorthimResults >> DNA;
+
+
+					std::cout << "Generation : " << generations << " Highest Fitness : " << fitness << std::endl << "With Sequence : " << DNA << std::endl;
+					break;
+				}
+			}
+			}
 		}
+		
 	}
 	if (quit == true)
 	{

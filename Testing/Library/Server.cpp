@@ -85,6 +85,12 @@ void Server::ServerStuff()
 							if (buffer == "solve")
 							{
 								algorthimManagement->FindSolution();
+								sf::Packet sendToClient;
+								sendToClient << algorthimManagement->ResultGenerations;
+								sendToClient << algorthimManagement->ResultFitness;
+								sendToClient << algorthimManagement->ResultString;
+								socket->send(sendToClient);
+								delete algorthimManagement;
 								algorthimManagement = new Algorthims();
 							}
 

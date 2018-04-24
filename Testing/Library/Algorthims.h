@@ -52,6 +52,11 @@ public:
 	std::vector<Gene*> Population;
 	std::vector<Gene*> Solution;
 	std::vector<Member> Parents;
+
+	int ResultGenerations;
+	int ResultFitness;
+	std::string ResultString;
+
 	int popCount = 20;
 	int currentFitness = 0;
 	int generations;
