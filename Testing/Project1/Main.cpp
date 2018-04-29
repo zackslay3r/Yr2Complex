@@ -51,6 +51,7 @@ int main()
 	
 	///Testing ALGORTHIMS
 	//algorthimData.FindSolution();
+	//algorthimData.PopulationCreator();
 
 	return 0;
 }

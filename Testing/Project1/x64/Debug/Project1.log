@@ -1,5 +1,4 @@
-﻿  Main.cpp
-Library_DEBUG.lib(SocketImpl.cpp.obj) : warning LNK4099: PDB 'sfml-network-s-d.pdb' was not found with 'Library_DEBUG.lib(SocketImpl.cpp.obj)' or at 'C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\sfml-network-s-d.pdb'; linking object as if no debug info
+﻿Library_DEBUG.lib(SocketImpl.cpp.obj) : warning LNK4099: PDB 'sfml-network-s-d.pdb' was not found with 'Library_DEBUG.lib(SocketImpl.cpp.obj)' or at 'C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\sfml-network-s-d.pdb'; linking object as if no debug info
 Library_DEBUG.lib(TcpSocket.cpp.obj) : warning LNK4099: PDB 'sfml-network-s-d.pdb' was not found with 'Library_DEBUG.lib(TcpSocket.cpp.obj)' or at 'C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\sfml-network-s-d.pdb'; linking object as if no debug info
 Library_DEBUG.lib(Socket.cpp.obj) : warning LNK4099: PDB 'sfml-network-s-d.pdb' was not found with 'Library_DEBUG.lib(Socket.cpp.obj)' or at 'C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\sfml-network-s-d.pdb'; linking object as if no debug info
 Library_DEBUG.lib(Packet.cpp.obj) : warning LNK4099: PDB 'sfml-network-s-d.pdb' was not found with 'Library_DEBUG.lib(Packet.cpp.obj)' or at 'C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Debug\sfml-network-s-d.pdb'; linking object as if no debug info

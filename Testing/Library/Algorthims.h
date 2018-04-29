@@ -5,7 +5,7 @@ struct Member
 {
 	std::string DNA;
 	int Fitness;
-
+	double probablity;
 };
 struct Population
 {
@@ -22,7 +22,7 @@ public:
 	bool SolutionFound = false;
 	
 	// USed for the mutation of genes. 
-	int MutationRate = 25;
+	int MutationRate = 10;
 	
 	Population Pop;
 
@@ -45,7 +45,7 @@ public:
 	void CalcFitness();
 	void ParentSelection();
 
-
+	Member pickParent(std::vector<Member> population);
 	void FindSolution();
 	/// Make sure for when these algorthims are created you!
 	/// 1. Have a inital population.
