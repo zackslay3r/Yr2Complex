@@ -5,13 +5,15 @@
 #include <atomic>
 #include "Algorthims.h"
 #include <thread>
+#include "ClientDetails.h"
+#include <mutex>
 class Server
 {
 public:
 	Server();
 	~Server();
 	void ServerStuff();
-	void AnswerQuestion(sf::TcpSocket* socket, std::string buffer);
+	void AnswerQuestion(ClientDetails* clientDetails, std::string buffer);
 	void RecieveMessages();
 	short PORT = 2501;
 	// an atomic is a template type that no matter if two threads are accessing, it will sort it out.
@@ -20,12 +22,14 @@ public:
 
 
 	sf::SocketSelector selector;
-	Algorthims* algorthimManagement;
 	std::vector<std::thread> threads;
 protected:
 	
 
 
-	std::vector<sf::TcpSocket*> sockets;
+	//std::vector<sf::TcpSocket*> sockets;
+	std::vector<sf::Mutex> Detailsmutex;
+	std::vector<ClientDetails*> details;
+
 };
 

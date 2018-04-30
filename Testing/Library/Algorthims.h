@@ -22,15 +22,11 @@ public:
 	bool SolutionFound = false;
 	
 	// USed for the mutation of genes. 
-	int MutationRate = 10;
+	int MutationRate = 25;
 	
 	Population Pop;
 
 
-
-	
-
-	Algorthims();
 	Algorthims(std::string Solution);
 
 

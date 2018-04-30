@@ -5,7 +5,6 @@
 Server::Server()
 {
 	listenerRun = true;
-	algorthimManagement = new Algorthims();
 }
 
 
@@ -26,19 +25,29 @@ void Server::ServerStuff()
 		{
 			//if (selector.isReady(listener))
 			//{
-				sf::TcpSocket* tcpsocket = new sf::TcpSocket();
-				tcpsocket->setBlocking(false);
-				if(listener.accept(*tcpsocket) == sf::TcpSocket::Status::Done)
+				//sf::TcpSocket* tcpsocket = new sf::TcpSocket();
+				//sf::Mutex* newMutex = new sf::Mutex();
+				ClientDetails* newClientDetails = new ClientDetails();
+				std::unique_lock<std::mutex> lock(newClientDetails->clientMutex);
+				if(listener.accept(newClientDetails->clientSocket) == sf::TcpSocket::Status::Done)
 				{
 				//socket gets assigned here.
-				sockets.push_back(tcpsocket);
-				selector.add(*tcpsocket);
-				std::cout << "New client connected: " << tcpsocket->getRemoteAddress() << std::endl;
+				//sockets.push_back(tcpsocket);
+				//mutex.push_back(newMutex);
+					details.push_back(newClientDetails);
+
+				//ClientDetails
+				//selector.add(newClientDetails->clientSocket);
+				std::cout << "New client connected: " << newClientDetails->clientSocket.getRemoteAddress() << std::endl;
+				lock.unlock();
 				}
 				else
 				{
-					delete tcpsocket;
+					lock.unlock();
+					delete newClientDetails;
+
 				}
+				
 			//}
 			//char buffer[1024];
 			sf::Packet recievedPacket;
@@ -49,11 +58,12 @@ void Server::ServerStuff()
 			sf::Socket::Status status;
 			//for (auto& socket : sockets)
 
-			for (auto iter = sockets.begin(); iter != sockets.end();)
+			for (auto iter = details.begin(); iter != details.end();)
 			{
 				std::string buffer;
 				sf::TcpSocket* socket;
-				socket = *iter;
+				
+				socket = &(*iter)->clientSocket;
 			
 				
 				
@@ -67,8 +77,9 @@ void Server::ServerStuff()
 					}*/
 					
 					
-					
+					std::unique_lock<std::mutex> lock((*iter)->clientMutex);
 					status = socket->receive(recievedPacket);
+					lock.unlock();
 					bool deleted = false;
 					
 					
@@ -92,7 +103,7 @@ void Server::ServerStuff()
 								//algorthimManagement->SetString(buffer);
 								
 								
-							threads.push_back(std::thread([this,socket,buffer] {AnswerQuestion(socket,buffer); }));
+							threads.push_back(std::thread([this,iter,buffer] {AnswerQuestion(*iter,buffer); }));
 								//algorthimManagement->FindSolution();
 								////algorthimManagement->Start();
 
@@ -104,16 +115,20 @@ void Server::ServerStuff()
 								//delete algorthimManagement;
 								
 							//}
-
+							std::unique_lock<std::mutex> lock((*iter)->clientMutex);
 							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
+							lock.unlock();
 							buffer.clear();
 						}
 					}
 					else if (status == sf::Socket::Status::Disconnected)
 					{
+						std::unique_lock<std::mutex> lock((*iter)->clientMutex);
 						std::cout << "Disconnected user." << socket->getRemoteAddress().toString() << std::endl;
+						
 						socket->disconnect();
-						iter = sockets.erase(iter);
+						lock.unlock();
+						iter = details.erase(iter);
 						selector.remove(*socket);
 
 						deleted = true;
@@ -141,17 +156,19 @@ void Server::ServerStuff()
 	}
 }
 
-void Server::AnswerQuestion(sf::TcpSocket* socket, std::string buffer)
+void Server::AnswerQuestion(ClientDetails* clientdetails, std::string buffer)
 {
 	
-
-	algorthimManagement = new Algorthims(buffer);
+	
+	Algorthims *algorthimManagement = new Algorthims(buffer);
 	algorthimManagement->FindSolution();
 	sf::Packet sendToClient;
 	sendToClient << algorthimManagement->ResultGenerations;
 	sendToClient << algorthimManagement->ResultFitness;
 	sendToClient << algorthimManagement->ResultString;
-	socket->send(sendToClient);
+	std::unique_lock<std::mutex> lock(clientdetails->clientMutex);
+	clientdetails->clientSocket.send(sendToClient);
+	lock.unlock();
 	delete algorthimManagement;
 }
 

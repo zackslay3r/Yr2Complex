@@ -4,8 +4,6 @@
 #include "Algorthims.h"
 int main()
 {
-	Algorthims algorthimData;
-	
 
 	/// TESTING CLIENT
 	bool validPort = false;

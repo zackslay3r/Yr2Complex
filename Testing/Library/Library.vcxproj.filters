@@ -27,6 +27,9 @@
     <ClInclude Include="Gene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClientDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
