@@ -35,8 +35,9 @@ public:
 
 
 	void Setup();
-	//// MAIN PROBLEM 
-	//// have a random population of 10 0's/1's/2's and have them all be equal to 0.
+
+	void Start();
+
 	
 	void SetString(std::string string);
 

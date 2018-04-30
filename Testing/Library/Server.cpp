@@ -1,5 +1,5 @@
 #include "Server.h"
-
+#include "SFML/System.hpp"
 
 
 Server::Server()
@@ -42,8 +42,8 @@ void Server::ServerStuff()
 			//}
 			//char buffer[1024];
 			sf::Packet recievedPacket;
-			std::string buffer;
-			buffer.resize(100);
+			
+			//buffer.resize(100);
 			std::size_t received = 0;
 
 			sf::Socket::Status status;
@@ -51,7 +51,7 @@ void Server::ServerStuff()
 
 			for (auto iter = sockets.begin(); iter != sockets.end();)
 			{
-				
+				std::string buffer;
 				sf::TcpSocket* socket;
 				socket = *iter;
 			
@@ -88,15 +88,20 @@ void Server::ServerStuff()
 								//buffer.clear();
 								//std::string newStringToSolve;
 								//recievedPacket >> newStringToSolve;
-								algorthimManagement = new Algorthims(buffer);
+								/*algorthimManagement = new Algorthims(buffer);*/
 								//algorthimManagement->SetString(buffer);
-								algorthimManagement->FindSolution();
-								sf::Packet sendToClient;
-								sendToClient << algorthimManagement->ResultGenerations;
-								sendToClient << algorthimManagement->ResultFitness;
-								sendToClient << algorthimManagement->ResultString;
-								socket->send(sendToClient);
-								delete algorthimManagement;
+								
+								
+							threads.push_back(std::thread([this,socket,buffer] {AnswerQuestion(socket,buffer); }));
+								//algorthimManagement->FindSolution();
+								////algorthimManagement->Start();
+
+								//sf::Packet sendToClient;
+								//sendToClient << algorthimManagement->ResultGenerations;
+								//sendToClient << algorthimManagement->ResultFitness;
+								//sendToClient << algorthimManagement->ResultString;
+								//socket->send(sendToClient);
+								//delete algorthimManagement;
 								
 							//}
 
@@ -134,6 +139,20 @@ void Server::ServerStuff()
 		
 
 	}
+}
+
+void Server::AnswerQuestion(sf::TcpSocket* socket, std::string buffer)
+{
+	
+
+	algorthimManagement = new Algorthims(buffer);
+	algorthimManagement->FindSolution();
+	sf::Packet sendToClient;
+	sendToClient << algorthimManagement->ResultGenerations;
+	sendToClient << algorthimManagement->ResultFitness;
+	sendToClient << algorthimManagement->ResultString;
+	socket->send(sendToClient);
+	delete algorthimManagement;
 }
 
 void Server::RecieveMessages()

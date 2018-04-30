@@ -2,6 +2,7 @@
 #include <random>
 #include <time.h>
 #include <iostream>
+#include <SFML/System.hpp>
 
 Algorthims::Algorthims()
 {
@@ -60,6 +61,16 @@ void Algorthims::Setup()
 	
 	generations = 0;
 	SolutionFound = false;
+}
+
+void Algorthims::Start()
+{
+	/*sf::Thread solutionFind(&Algorthims::FindSolution);
+
+	solutionFind.launch();*/
+
+
+
 }
 
 void Algorthims::SetString(std::string string)
@@ -123,51 +134,10 @@ void Algorthims::ParentSelection()
 
 	//DOES WORK, BUT TESTING NEW WAY OF DOING IT.
 	// First, sort out the population from highest to lowest in terms of fitness
-	std::sort(Pop.Members.begin(), Pop.Members.end(), [](Member const &a, Member const &b) {return a.Fitness > b.Fitness; });
+	//std::sort(Pop.Members.begin(), Pop.Members.end(), [](Member const &a, Member const &b) {return a.Fitness > b.Fitness; });
 
-	// Then, make a vector of Genes that are going to be the parents.
-	Parents = std::vector<Member>{ Pop.Members.at(0),Pop.Members.at(1) };
-
-	// Gene permutation and mating
-	for (int i = 0; i < Pop.Members.size(); i++)
-	{
-		for (int j = 0; j < Pop.Members.at(i).DNA.size(); j++)
-		{
-			int TempSelection = rand() % Parents.size();
-			Pop.Members.at(i).DNA.at(j) = Parents.at(TempSelection).DNA.at(j);
-
-
-			// random mutation rate
-			if (rand() % 1000 < MutationRate)
-			{
-				Pop.Members.at(i).DNA.at(j) = (unsigned char)rand() % 96 + 32;
-			}
-
-		}
-	}
-
-
-
-
-
-	//// Have a sum variable for all the fitness scores of each member of the population.
-	//int sumOfFitness = 0;
-	//	
-	//// Add each of the scores to the sum.
-	//for (int i = 0; i < Pop.Members.size(); i++)
-	//{
-	//	sumOfFitness += Pop.Members.at(i).Fitness;
-	//}
-
-	//// Have the probability of member be calculated.
-	//for (int i = 0; i < Pop.Members.size(); i++)
-	//{
-	//	Pop.Members.at(i).probablity += Pop.Members.at(i).Fitness / sumOfFitness;
-	//}
-
-	////// Then, make a vector of Genes that are going to be the parents.
-	//Parents = std::vector<Member>{ pickParent(Pop.Members),pickParent(Pop.Members) };
-
+	//// Then, make a vector of Genes that are going to be the parents.
+	//Parents = std::vector<Member>{ Pop.Members.at(0),Pop.Members.at(1) };
 
 	//// Gene permutation and mating
 	//for (int i = 0; i < Pop.Members.size(); i++)
@@ -187,12 +157,53 @@ void Algorthims::ParentSelection()
 	//	}
 	//}
 
+
+
+
+
+	// Have a sum variable for all the fitness scores of each member of the population.
+	int sumOfFitness = 0;
+		
+	// Add each of the scores to the sum.
+	for (int i = 0; i < Pop.Members.size(); i++)
+	{
+		sumOfFitness += Pop.Members.at(i).Fitness;
+	}
+
+	// Have the probability of member be calculated.
+	for (int i = 0; i < Pop.Members.size(); i++)
+	{
+		Pop.Members.at(i).probablity += Pop.Members.at(i).Fitness / sumOfFitness;
+	}
+
+	//// Then, make a vector of Genes that are going to be the parents.
+	Parents = std::vector<Member>{ pickParent(Pop.Members),pickParent(Pop.Members) };
+
+
+	// Gene permutation and mating
+	for (int i = 0; i < Pop.Members.size(); i++)
+	{
+		for (int j = 0; j < Pop.Members.at(i).DNA.size(); j++)
+		{
+			int TempSelection = rand() % Parents.size();
+			Pop.Members.at(i).DNA.at(j) = Parents.at(TempSelection).DNA.at(j);
+
+
+			// random mutation rate
+			if (rand() % 1000 < MutationRate)
+			{
+				Pop.Members.at(i).DNA.at(j) = (unsigned char)rand() % 96 + 32;
+			}
+
+		}
+	}
+
 }
 
 
 
 
-Member  Algorthims::pickParent(std::vector<Member> population)
+Member Algorthims::pickParent(std::vector<Member> population)
 {
 	std::default_random_engine generator;
 	std::uniform_real_distribution<double> distribution(0.0, 1.0);
@@ -213,6 +224,7 @@ Member  Algorthims::pickParent(std::vector<Member> population)
 }
 void Algorthims::FindSolution()
 {
+	
 
 	// While the solution was not found
 	while (!SolutionFound)
