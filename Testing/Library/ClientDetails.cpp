@@ -5,6 +5,8 @@
 ClientDetails::ClientDetails()
 {
 	clientSocket.setBlocking(false);
+	//clientAlgorithims = new Algorthims("default");
+
 }
 
 

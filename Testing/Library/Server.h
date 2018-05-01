@@ -14,13 +14,14 @@ public:
 	~Server();
 	void ServerStuff();
 	void AnswerQuestion(ClientDetails* clientDetails, std::string buffer);
-	void RecieveMessages();
+	void SendMessages();
+
 	short PORT = 2501;
 	// an atomic is a template type that no matter if two threads are accessing, it will sort it out.
 	std::atomic<bool> listenerRun;
 	
-
-
+	std::string finalOutput;
+	
 	sf::SocketSelector selector;
 	std::vector<std::thread> threads;
 protected:

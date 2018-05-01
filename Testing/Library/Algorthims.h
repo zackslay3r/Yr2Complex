@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
-#include "Gene.h"	
+#include "Gene.h"
+
 struct Member
 {
 	std::string DNA;
@@ -42,6 +43,8 @@ public:
 	void CalcFitness();
 	void ParentSelection();
 
+	
+
 	Member pickParent(std::vector<Member> population);
 	void FindSolution();
 	/// Make sure for when these algorthims are created you!
@@ -57,6 +60,7 @@ public:
 	int ResultGenerations;
 	int ResultFitness;
 	std::string ResultString;
+	
 
 	int popCount = 20;
 	int currentFitness = 0;

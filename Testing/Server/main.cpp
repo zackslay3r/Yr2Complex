@@ -34,7 +34,8 @@ int main()
 
 	while (true)
 	{
-		s->RecieveMessages();
+		s->SendMessages();
+		
 	}
 
 	return 0;

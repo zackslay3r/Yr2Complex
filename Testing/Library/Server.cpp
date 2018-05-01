@@ -1,7 +1,8 @@
 #include "Server.h"
 #include "SFML/System.hpp"
-
-
+#include <stdlib.h>
+#include <thread>
+#include <chrono>
 Server::Server()
 {
 	listenerRun = true;
@@ -102,7 +103,8 @@ void Server::ServerStuff()
 								/*algorthimManagement = new Algorthims(buffer);*/
 								//algorthimManagement->SetString(buffer);
 								
-								
+							//(*iter)->clientAlgorithims->SetString(buffer);
+
 							threads.push_back(std::thread([this,iter,buffer] {AnswerQuestion(*iter,buffer); }));
 								//algorthimManagement->FindSolution();
 								////algorthimManagement->Start();
@@ -160,20 +162,59 @@ void Server::AnswerQuestion(ClientDetails* clientdetails, std::string buffer)
 {
 	
 	
-	Algorthims *algorthimManagement = new Algorthims(buffer);
-	algorthimManagement->FindSolution();
+	clientdetails->clientAlgorithims = new Algorthims(buffer);
+	clientdetails->clientAlgorithims->FindSolution();
+	
 	sf::Packet sendToClient;
-	sendToClient << algorthimManagement->ResultGenerations;
-	sendToClient << algorthimManagement->ResultFitness;
-	sendToClient << algorthimManagement->ResultString;
+	sendToClient << clientdetails->clientAlgorithims->ResultGenerations;
+	sendToClient << clientdetails->clientAlgorithims->ResultFitness;
+	sendToClient << clientdetails->clientAlgorithims->ResultString;
 	std::unique_lock<std::mutex> lock(clientdetails->clientMutex);
 	clientdetails->clientSocket.send(sendToClient);
 	lock.unlock();
-	delete algorthimManagement;
+
 }
 
-void Server::RecieveMessages()
+void Server::SendMessages()
 {
+	// Create a string that will be used to output all the data.
+	std::string finalOutput;
+	// For every client, we are going to add to the string what we wish to output.
+	for (auto &iter : details)
+	{
+		if (iter->clientAlgorithims != nullptr && (iter)->clientAlgorithims->Parents.size() > 0)
+		{
+			if (iter->clientAlgorithims->SolutionFound == false)
+			{
+				finalOutput += std::string("Generation : ") + std::to_string((iter)->clientAlgorithims->generations) + 
+				std::string(" Correct characters: ") + std::to_string((iter)->clientAlgorithims->Parents.at(0).Fitness / 10) + 
+				std::string(" Out of: ") + std::to_string((iter)->clientAlgorithims->DNASolution.size()) + std::string("With Sequence : ") + 
+				(iter)->clientAlgorithims->DNASolution;
+				finalOutput += "\n";
+			}
+			else
+			{
+				
+				finalOutput += std::string("Generation ") + std::to_string((iter)->clientAlgorithims->generations) + std::string(" Evolved to the full sequence. ");
+				finalOutput += "\n";
+			}
+		}
+	}	
+	system("CLS");
+	std::cout << "The servers IP is " << sf::IpAddress::getLocalAddress().toString() << std::endl;
+	std::cout << "The port number is" << PORT;
+	std::cout << finalOutput;
+	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	
+	// Then clear it.
+	
+	//finalOutput = " ";
+
+	// Output it.
+	
+	
+	//std::cout << "Generation : " <<  << " Correct characters: " << Parents.at(0).Fitness / 10 << " Out of: " << DNASolution.size() << std::endl << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
+
 
 	//std::cout << "The client said: " << buffer << std::endl;
 }

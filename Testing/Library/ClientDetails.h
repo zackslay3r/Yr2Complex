@@ -1,6 +1,7 @@
 #pragma once
 #include <mutex>
 #include "SFML\Network.hpp"
+#include "Algorthims.h"
 class ClientDetails
 {
 public:
@@ -10,6 +11,7 @@ public:
 
 	sf::TcpSocket clientSocket;
 	std::mutex clientMutex;
+	Algorthims* clientAlgorithims;
 
 };
 
