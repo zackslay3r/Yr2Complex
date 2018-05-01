@@ -189,7 +189,7 @@ void Server::SendMessages()
 				finalOutput += std::string("Generation : ") + std::to_string((iter)->clientAlgorithims->generations) + 
 				std::string(" Correct characters: ") + std::to_string((iter)->clientAlgorithims->Parents.at(0).Fitness / 10) + 
 				std::string(" Out of: ") + std::to_string((iter)->clientAlgorithims->DNASolution.size()) + std::string("With Sequence : ") + 
-				(iter)->clientAlgorithims->DNASolution;
+				(iter)->clientAlgorithims->ResultString;
 				finalOutput += "\n";
 			}
 			else
@@ -204,7 +204,7 @@ void Server::SendMessages()
 	std::cout << "The servers IP is " << sf::IpAddress::getLocalAddress().toString() << std::endl;
 	std::cout << "The port number is" << PORT;
 	std::cout << finalOutput;
-	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	std::this_thread::sleep_for(std::chrono::milliseconds(16));
 	
 	// Then clear it.
 	
