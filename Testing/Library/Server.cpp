@@ -22,23 +22,15 @@ void Server::ServerStuff()
 	std::cout << "The servers IP is " << sf::IpAddress::getLocalAddress().toString() << std::endl;
 	while (listenerRun)
 	{
-		if (true /*selector.wait(sf::Time(sf::milliseconds(1)))*/)
+		if (true)
 		{
-			//if (selector.isReady(listener))
-			//{
-				//sf::TcpSocket* tcpsocket = new sf::TcpSocket();
-				//sf::Mutex* newMutex = new sf::Mutex();
+		
 				ClientDetails* newClientDetails = new ClientDetails();
 				std::unique_lock<std::mutex> lock(newClientDetails->clientMutex);
 				if(listener.accept(newClientDetails->clientSocket) == sf::TcpSocket::Status::Done)
 				{
-				//socket gets assigned here.
-				//sockets.push_back(tcpsocket);
-				//mutex.push_back(newMutex);
-					details.push_back(newClientDetails);
-
-				//ClientDetails
-				//selector.add(newClientDetails->clientSocket);
+			
+				details.push_back(newClientDetails);
 				std::cout << "New client connected: " << newClientDetails->clientSocket.getRemoteAddress() << std::endl;
 				lock.unlock();
 				}
@@ -49,15 +41,14 @@ void Server::ServerStuff()
 
 				}
 				
-			//}
-			//char buffer[1024];
+			
 			sf::Packet recievedPacket;
 			
-			//buffer.resize(100);
+			
 			std::size_t received = 0;
 
 			sf::Socket::Status status;
-			//for (auto& socket : sockets)
+			
 
 			for (auto iter = details.begin(); iter != details.end();)
 			{

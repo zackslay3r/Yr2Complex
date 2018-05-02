@@ -2,44 +2,44 @@
 #include <SFML/Network.hpp>
 #include <string>
 #include "Algorthims.h"
+
+bool validPort = false;
+short SelectedPortNumber;
+std::string ip;
+Client* newClient = new Client;
+
 int main()
 {
 
 	/// TESTING CLIENT
 	bool validPort = false;
-	short SelectedPortNumber;
-	std::string ip;
 
-	Client* newClient = new Client;
+	
 
-	while (validPort == false)
+	
+	if (newClient->EstablishConnection() == true)
 	{
-		std::cout << "Please type in an IP to connect to. " << std::endl;
-		std::cin >> ip;
-		std::cout << "Insert a number between 1-5000 as the port to connect to." << std::endl ;
-		std::cin >> SelectedPortNumber;
-
-		if (SelectedPortNumber > 1 || SelectedPortNumber < 5000)
+		
+		validPort = true;
+		while (validPort == true)
 		{
-			//if (newClient->ClientConnection(sf::IpAddress::getLocalAddress().toString(), SelectedPortNumber))
-			if (newClient->ClientConnection(ip, SelectedPortNumber))
+			if (newClient->stillConnected == true)
 			{
-				validPort = true;
-				std::cout << "Connected established." << std::endl;
+				newClient->getInput();
 			}
 			else
 			{
-				std::cout << "Connection failed. Invalid Port.";
+				std::cout << "You are not connected anymore..." << std::endl;
+				
+				if (newClient->EstablishConnection() == true)
+				{
+					validPort = true;
+					newClient->stillConnected = true;
+					break;
+				}
+				
 			}
-			
-		}
-	
-	}
-	if (validPort == true)
-	{
-		while (validPort == true)
-		{
-			newClient->getInput();
+
 		}
 	
 	}
@@ -50,4 +50,34 @@ int main()
 
 
 	return 0;
+}
+
+void EstablishConnection(bool validPort)
+{
+	
+	
+	//while (validPort == false)
+	//{
+	//	std::cout << "Please type in an IP to connect to. " << std::endl;
+	//	std::cin >> ip;
+	//	std::cout << "Insert a number between 1-5000 as the port to connect to." << std::endl;
+	//	std::cin >> SelectedPortNumber;
+
+	//	if (SelectedPortNumber > 1 || SelectedPortNumber < 5000)
+	//	{
+
+	//		if (newClient->ClientConnection(ip, SelectedPortNumber))
+	//		{
+	//			validPort = true;
+	//			std::cout << "Connected established." << std::endl;
+	//		}
+	//		else
+	//		{
+	//			std::cout << "Connection failed. Invalid Port.";
+	//		}
+
+	//	}
+
+	//}
+
 }

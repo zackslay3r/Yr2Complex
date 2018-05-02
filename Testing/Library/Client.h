@@ -8,14 +8,16 @@ public:
 	Client();
 	~Client();
 	bool ClientConnection(std::string IPADDRESS, short PORT);
-	void ClientChat();
+
 	void getInput();
 	sf::TcpSocket socket;
 	bool isConnected;
 	sf::Mutex ClientMutex;
 	bool quit = false;
 	bool inputCompleted;
-	void doClientThings(sf::Packet packet);
+	void sendClientRequest(sf::Packet packet);
+	bool EstablishConnection();
+	bool stillConnected = true;
 	sf::Packet sendMessage;
 
 	std::string msgSend;

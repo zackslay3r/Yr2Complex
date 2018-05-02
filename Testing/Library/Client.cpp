@@ -21,48 +21,34 @@ bool Client::ClientConnection( std::string IPADDRESS, short PORT)
 {
 	
 
-	{
+	
 		if (socket.connect(IPADDRESS, PORT) == sf::Socket::Done)
 		{
 			std::cout << "Connected\n";
 			isConnected = true;
 			return true;
 		}
-		return false;
-	}
+		else if (socket.connect(IPADDRESS, PORT) == sf::Socket::Disconnected)
+		{
+		
+		}
+		else
+		{
+			return false;
+		}
+
 }
 
-void Client::ClientChat()
-{
 
-}
 
 void Client::getInput()
 {
+	
 	bool inputCompleted = false;
 	bool firstRun = false;
 
 	while (quit == false)
 	{
-			// This was for testing purposes only....
-		/*
-			std::string s;
-		
-			std::cout << "\nEnter \"exit\" to quit or message to send: " << std::endl;
-			//std::cin.ignore();
-			getline(std::cin, s);
-			inputCompleted = true;
-
-		//std::cin >> s;
-		*/
-		//if (s == "exit")
-		//{
-		//	quit = true;
-		//}
-		
-		
-			
-				
 				
 				std::cout << "Input a sentence for me to solve with genetic algorithims or type 'quit' to disconnect." << std::endl;
 				if (firstRun == false)
@@ -91,7 +77,7 @@ void Client::getInput()
 					if (response == "Yes" || response == "yes")
 					{
 						SolutionDNA = file_contents;
-						doClientThings(sendMessage);
+						sendClientRequest(sendMessage);
 					}
 					else
 					{
@@ -113,7 +99,7 @@ void Client::getInput()
 				else
 				{
 					stringToSave = SolutionDNA;
-					doClientThings(sendMessage);
+					sendClientRequest(sendMessage);
 					
 				}
 		
@@ -127,11 +113,11 @@ void Client::getInput()
 	}
 }
 
-void Client::doClientThings(sf::Packet packet)
+void Client::sendClientRequest(sf::Packet packet)
 {
 	packet << SolutionDNA;
 	ClientMutex.lock();
-	//msgSend = s;
+
 	socket.send(packet);
 	ClientMutex.unlock();
 
@@ -143,13 +129,14 @@ void Client::doClientThings(sf::Packet packet)
 
 	sf::Packet AlgorthimResults;
 	sf::Socket::Status ClientStatus;
-
+	ClientStatus = socket.receive(AlgorthimResults);
 	while (true)
 	{
-		ClientStatus = socket.receive(AlgorthimResults);
+		
 
 		if (ClientStatus == sf::Socket::Status::Done)
 		{
+			
 			int generations;
 			int fitness;
 			std::string DNA;
@@ -162,8 +149,63 @@ void Client::doClientThings(sf::Packet packet)
 			std::cout << "Generation : " << generations << " Highest Fitness : " << fitness << std::endl << "With Sequence : " << DNA << std::endl;
 			inputCompleted = false;
 			SolutionDNA = " ";
+			stillConnected = true;
 			break;
 		}
+		else if (ClientStatus == sf::Socket::Status::Disconnected)
+		{
+			std::cout << "You have been disconnect from the server, please try again. ";
+			socket.disconnect();
+			stillConnected = false;
+			while (stillConnected == false)
+			{
+				if (EstablishConnection() == true)
+				{
+					getInput();
+				}
+			}
+		}
+
+	}
+}
+
+bool Client::EstablishConnection()
+{
+	/// TESTING CLIENT
+	bool validPort = false;
+
+	std::string ip;
+	short SelectedPortNumber;
+
+
+		while (validPort == false)
+		{
+			std::cout << "Please type in an IP to connect to. " << std::endl;
+			std::cin >> ip;
+			std::cout << "Insert a number between 1-5000 as the port to connect to." << std::endl;
+			std::cin >> SelectedPortNumber;
+
+			if (SelectedPortNumber > 1 || SelectedPortNumber < 5000)
+			{
+
+				if (ClientConnection(ip, SelectedPortNumber))
+				{
+					validPort = true;
+					std::cout << "Connected established." << std::endl;
+					stillConnected = true;
+					return true;
+				}
+				else
+				{
+					std::cout << "Connection failed. Invalid Port.";
+					//validPort = false;
+					return false;
+				}
+
+			}
+
+		
+
 	}
 }
 
