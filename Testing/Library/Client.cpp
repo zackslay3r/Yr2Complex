@@ -1,6 +1,9 @@
 #include "Client.h"
-
-
+#include <iostream>
+#include <fstream>
+#include <iterator>
+#include <sstream>
+#include <vector>
 
 Client::Client()
 {
@@ -59,9 +62,8 @@ void Client::getInput()
 		
 		
 			
-				std::string SolutionDNA;
-				sf::Packet sendMessage;
-
+				
+				
 				std::cout << "Input a sentence for me to solve with genetic algorithims or type 'quit' to disconnect." << std::endl;
 				if (firstRun == false)
 				{
@@ -74,46 +76,45 @@ void Client::getInput()
 				{
 					quit = true;
 				}
-					
-				else
+				else if (SolutionDNA == "load")
 				{
 
-					sendMessage << SolutionDNA;
-					ClientMutex.lock();
-					//msgSend = s;
-					socket.send(sendMessage);
-					ClientMutex.unlock();
+					std::ifstream loadFile{"Save.txt"};
+					std::string file_contents{ std::istreambuf_iterator<char>(loadFile), std::istreambuf_iterator<char>() };
 
+					std::cout << "File contained: " << file_contents << std::endl;
 
+					std::string response;
+					std::cout << "Use this string?" << std::endl;
+					getline(std::cin, response);
 
-
-
-
-
-					sf::Packet AlgorthimResults;
-					sf::Socket::Status ClientStatus;
-
-					while (true)
+					if (response == "Yes" || response == "yes")
 					{
-						ClientStatus = socket.receive(AlgorthimResults);
-
-						if (ClientStatus == sf::Socket::Status::Done)
-						{
-							int generations;
-							int fitness;
-							std::string DNA;
-
-							AlgorthimResults >> generations;
-							AlgorthimResults >> fitness;
-							AlgorthimResults >> DNA;
-
-
-							std::cout << "Generation : " << generations << " Highest Fitness : " << fitness << std::endl << "With Sequence : " << DNA << std::endl;
-							inputCompleted = false;
-							SolutionDNA = " ";
-							break;
-						}
+						SolutionDNA = file_contents;
+						doClientThings(sendMessage);
 					}
+					else
+					{
+						continue;
+					}
+				}
+				else if (SolutionDNA == "save")
+				{
+					if (stringToSave.size() != 0)
+					{
+						
+						std::ofstream saveFile("Save.txt");
+
+						saveFile << stringToSave;
+
+						saveFile.close();
+					}
+				}
+				else
+				{
+					stringToSave = SolutionDNA;
+					doClientThings(sendMessage);
+					
 				}
 		
 		
@@ -123,6 +124,46 @@ void Client::getInput()
 		socket.disconnect();
 		exit(0);
 		
+	}
+}
+
+void Client::doClientThings(sf::Packet packet)
+{
+	packet << SolutionDNA;
+	ClientMutex.lock();
+	//msgSend = s;
+	socket.send(packet);
+	ClientMutex.unlock();
+
+
+
+
+
+
+
+	sf::Packet AlgorthimResults;
+	sf::Socket::Status ClientStatus;
+
+	while (true)
+	{
+		ClientStatus = socket.receive(AlgorthimResults);
+
+		if (ClientStatus == sf::Socket::Status::Done)
+		{
+			int generations;
+			int fitness;
+			std::string DNA;
+
+			AlgorthimResults >> generations;
+			AlgorthimResults >> fitness;
+			AlgorthimResults >> DNA;
+
+
+			std::cout << "Generation : " << generations << " Highest Fitness : " << fitness << std::endl << "With Sequence : " << DNA << std::endl;
+			inputCompleted = false;
+			SolutionDNA = " ";
+			break;
+		}
 	}
 }
 

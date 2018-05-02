@@ -14,7 +14,13 @@ public:
 	bool isConnected;
 	sf::Mutex ClientMutex;
 	bool quit = false;
+	bool inputCompleted;
+	void doClientThings(sf::Packet packet);
+	sf::Packet sendMessage;
 
 	std::string msgSend;
+	std::string stringToSave;
+	std::string SolutionDNA;
+
 };
 

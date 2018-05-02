@@ -95,6 +95,9 @@ void Server::ServerStuff()
 					{
 						if ((recievedPacket >> buffer) && !buffer.empty())
 						{
+						
+			
+							
 							//if (buffer == "solve")
 							//{
 								//buffer.clear();
