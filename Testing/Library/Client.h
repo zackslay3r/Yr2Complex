@@ -39,7 +39,7 @@ public:
 
 	bool EstablishConnection();
 	
-	bool stillConnected = true;
+	bool stillConnected;
 	
 	sf::Packet sendMessage;
 

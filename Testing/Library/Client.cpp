@@ -8,6 +8,7 @@
 Client::Client()
 {
 	isConnected = false;
+	stillConnected = false;
 }
 
 

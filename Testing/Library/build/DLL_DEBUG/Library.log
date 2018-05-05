@@ -18,7 +18,7 @@ Algorthims.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsi
   ClientDetails.cpp
   Server.cpp
   Generating Code...
-c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(40): warning C4715: 'Client::ClientConnection': not all control paths return a value
-c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(222): warning C4715: 'Client::EstablishConnection': not all control paths return a value
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(41): warning C4715: 'Client::ClientConnection': not all control paths return a value
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(223): warning C4715: 'Client::EstablishConnection': not all control paths return a value
      Creating library C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library_DEBUG.lib and object C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library_DEBUG.exp
   Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library_DEBUG.dll

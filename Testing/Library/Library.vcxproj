@@ -133,8 +133,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_DEBUG|x64'">
     <LinkIncremental>
     </LinkIncremental>
-    <OutDir>$(ProjectDir)\lib\</OutDir>
-    <IntDir>$(ProjectDir)\build\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_RELEASE|x64'">
