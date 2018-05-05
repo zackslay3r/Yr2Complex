@@ -1,1 +1,7 @@
-﻿  Project1.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Client.exe
+﻿  Main.cpp
+  Generating code
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(41): warning C4715: 'Client::ClientConnection': not all control paths return a value
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(223): warning C4715: 'Client::EstablishConnection': not all control paths return a value
+  All 244 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Project1.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Client.exe

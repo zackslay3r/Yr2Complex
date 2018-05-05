@@ -1,7 +1,5 @@
 ﻿  main.cpp
   Generating code
-  13 of 638 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    35 functions had inline decision re-evaluated but remain unchanged
+  All 638 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Server.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Server.exe

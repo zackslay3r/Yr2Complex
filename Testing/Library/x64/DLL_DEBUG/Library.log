@@ -1,4 +1,5 @@
-﻿  Algorthims.cpp
+﻿F:\Visual Stuido 2017\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Algorthims.cpp
 c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(26): warning C4251: 'Algorthims::DNASolution': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Algorthims'
   F:\Visual Stuido 2017\VC\Tools\MSVC\14.12.25827\include\xstring(4054): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
 c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(43): warning C4251: 'Algorthims::Parents': class 'std::vector<Member,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Algorthims'
@@ -20,5 +21,5 @@ Algorthims.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsi
   Generating Code...
 c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(41): warning C4715: 'Client::ClientConnection': not all control paths return a value
 c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(223): warning C4715: 'Client::EstablishConnection': not all control paths return a value
-     Creating library C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\DLL_DEBUG\Library_DEBUG.lib and object C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\DLL_DEBUG\Library_DEBUG.exp
-  Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\DLL_DEBUG\Library_DEBUG.dll
+     Creating library C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\\x64\DLL_DEBUG\Library_DEBUG.lib and object C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\\x64\DLL_DEBUG\Library_DEBUG.exp
+  Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\\x64\DLL_DEBUG\Library_DEBUG.dll
