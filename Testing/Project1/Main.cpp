@@ -1,7 +1,15 @@
 #include "Client.h"
 #include <SFML/Network.hpp>
+//#include <../SFML-2.4.2/include/SFML/Network.hpp>
 #include <string>
 #include "Algorthims.h"
+
+
+///This
+//#include ""
+
+
+
 
 bool validPort = false;
 short SelectedPortNumber;
@@ -16,7 +24,7 @@ int main()
 
 	
 
-	
+	// If we have established a connection, we want to allow the user to have free input from within the client.
 	if (newClient->EstablishConnection() == true)
 	{
 		

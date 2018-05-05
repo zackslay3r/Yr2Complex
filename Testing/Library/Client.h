@@ -1,8 +1,11 @@
 #pragma once
 #include <SFML/Network.hpp>
+//#include <../SFML/Network.hpp>
 #include <iostream>
 #include <string>
-class Client
+#include "dllmain.h"
+
+class DLL Client
 {
 public:
 	Client();

@@ -1,7 +1,7 @@
 ﻿  main.cpp
   Generating code
-  502 of 502 functions (100.0%) were compiled, the rest were copied from previous compilation.
-    99 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  13 of 638 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    35 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Server.vcxproj -> C:\Users\s171842\Documents\GitHub\Yr2Complex\Yr2Complex\Testing\x64\Release\Server.exe
+  Server.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\Release\Server.exe

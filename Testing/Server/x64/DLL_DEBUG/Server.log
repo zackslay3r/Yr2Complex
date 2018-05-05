@@ -1,0 +1,5 @@
+﻿  main.cpp
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+  Generating code
+  Finished generating code
+  Server.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\DLL_DEBUG\Server_DEBUG.exe

@@ -1,8 +1,10 @@
 #pragma once
 #include <mutex>
-#include "SFML\Network.hpp"
+#include "SFML/Network.hpp"
 #include "Algorthims.h"
-class ClientDetails
+#include "dllmain.h"
+
+class DLL ClientDetails
 {
 public:
 	ClientDetails();

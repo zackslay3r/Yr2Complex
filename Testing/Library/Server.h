@@ -7,7 +7,8 @@
 #include <thread>
 #include "ClientDetails.h"
 #include <mutex>
-class Server
+#include "dllmain.h"
+class DLL Server
 {
 public:
 	Server();

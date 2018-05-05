@@ -1,0 +1,5 @@
+﻿  main.cpp
+  main.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+  Finished generating code
+  Server.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\x64\DLL_RELEASE\Server.exe

@@ -24,10 +24,10 @@
     <ClInclude Include="Algorthims.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gene.h">
+    <ClInclude Include="ClientDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClientDetails.h">
+    <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -39,9 +39,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorthims.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ClientDetails.cpp">

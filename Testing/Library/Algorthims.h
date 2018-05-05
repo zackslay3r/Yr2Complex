@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Gene.h"
+#include "dllmain.h"
 
 struct Member
 {
@@ -13,7 +14,7 @@ struct Population
 	std::vector<Member> Members = std::vector<Member>(375);
 };
 
-class Algorthims
+class DLL Algorthims
 {
 public:
 	// This is the solution we are trying to find with our genetic algorthims.
@@ -22,41 +23,22 @@ public:
 	// A bool to check if the solution has been found.
 	bool SolutionFound = false;
 	
-	// USed for the mutation of genes. 
+	// Used for the mutation of genes. 
 	int MutationRate = 25;
 	
+	// Have the Algorthims class contain a Poplation of members.
 	Population Pop;
 
-
+	//This is the Algorthims constructor. 
+	// The constructor takes a parameter of type String, which will be set to be the DNASolution.
 	Algorthims(std::string Solution);
 
 
-	void Setup();
-
-	void Start();
-
-	
-	void SetString(std::string string);
-
-	void PopulationCreator();
-	//int CalcFitness(Gene* gene);
-	void CalcFitness();
-	void ParentSelection();
-
-	
-
-	Member pickParent(std::vector<Member> population);
-	void FindSolution();
-	/// Make sure for when these algorthims are created you!
-	/// 1. Have a inital population.
-	/// 2. Fitness Function.
-	/// 3. Selection.
-	/// 4. CrossOver.
-	/// 5. Mutation.
-	std::vector<Gene*> Population;
-	std::vector<Gene*> Solution;
+	//This is a vector of 2 partent that we are going to hold in order for the next generation.
 	std::vector<Member> Parents;
 
+
+	// These 3 variables are being used to hold data that will be sent to the client.
 	int ResultGenerations;
 	int ResultFitness;
 	std::string ResultString;
@@ -65,6 +47,17 @@ public:
 	int popCount = 20;
 	int currentFitness = 0;
 	int generations;
+
+
+	
+	void ParentSelection();
+
+	
+
+	void FindSolution();
+
+	
+
 	~Algorthims();
 };
 

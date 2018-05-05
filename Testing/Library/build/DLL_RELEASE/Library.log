@@ -1,0 +1,26 @@
+﻿  Algorthims.cpp
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(21): warning C4251: 'Algorthims::DNASolution': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Algorthims'
+  F:\Visual Stuido 2017\VC\Tools\MSVC\14.12.25827\include\xstring(4054): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(56): warning C4251: 'Algorthims::Parents': class 'std::vector<Member,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Algorthims'
+          with
+          [
+              _Ty=Member
+          ]
+  c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(14): note: see declaration of 'std::vector<Member,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Member
+          ]
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\Algorthims.h(60): warning C4251: 'Algorthims::ResultString': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Algorthims'
+  F:\Visual Stuido 2017\VC\Tools\MSVC\14.12.25827\include\xstring(4054): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+Algorthims.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Client.cpp
+  ClientDetails.cpp
+  Server.cpp
+     Creating library C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library.lib and object C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library.exp
+  Generating code
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(40): warning C4715: 'Client::ClientConnection': not all control paths return a value
+c:\users\user\documents\2k18 c++\yr2complex\testing\library\client.cpp(210): warning C4715: 'Client::EstablishConnection': not all control paths return a value
+  All 984 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Library.vcxproj -> C:\Users\user\Documents\2k18 C++\Yr2Complex\Testing\Library\\lib\Library.dll
