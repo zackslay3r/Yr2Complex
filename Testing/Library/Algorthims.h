@@ -3,16 +3,21 @@
 #include "Gene.h"
 #include "dllmain.h"
 
+// THis is a member of the population.
 struct Member
 {
 	std::string DNA;
 	int Fitness;
 	double probablity;
 };
+// A struct that will be our population.
 struct Population
 {
 	std::vector<Member> Members = std::vector<Member>(375);
 };
+
+//This is the Algorthims class.
+// It is responsible for finding the solution to whatever the client asks.
 
 class DLL Algorthims
 {
@@ -44,20 +49,25 @@ public:
 	std::string ResultString;
 	
 
-	int popCount = 20;
-	int currentFitness = 0;
+
+	// This variable is used to store the amount of generation within Algorthims before being sent to the client.
 	int generations;
 
 
-	
+	// This is the parent selection function.
+	// This will go though the population and select 2 memebers of the population with the highest fitness to be the parents for the next generation.
+	// This takes no parameters and returns void.
 	void ParentSelection();
 
 	
 
+	// This is the FindSolution function.
+	// This will automate the process of finding the solution to the clients pharse. This is the primary function within the 'Algorthims' class.
+	// It takes no parameters and returns void.
 	void FindSolution();
 
 	
-
+	// THis is the Algorthims destructor.
 	~Algorthims();
 };
 

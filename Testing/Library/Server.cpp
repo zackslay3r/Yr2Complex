@@ -62,11 +62,7 @@ void Server::ServerStuff()
 
 					buffer.clear();
 					recievedPacket.clear();	
-					
-			/*		if (selector.isReady(*socket) == false)
-					{
-					continue;
-					}*/
+			
 					
 					
 					std::unique_lock<std::mutex> lock((*iter)->clientMutex);
@@ -77,10 +73,6 @@ void Server::ServerStuff()
 					
 					
 					
-					//socket->receive(recievedPacket);
-
-					//socket->receive(buffer, sizeof(buffer), received);
-
 
 					if (status == sf::Socket::Status::Done)
 					{
@@ -89,28 +81,9 @@ void Server::ServerStuff()
 						
 			
 							
-							//if (buffer == "solve")
-							//{
-								//buffer.clear();
-								//std::string newStringToSolve;
-								//recievedPacket >> newStringToSolve;
-								/*algorthimManagement = new Algorthims(buffer);*/
-								//algorthimManagement->SetString(buffer);
-								
-							//(*iter)->clientAlgorithims->SetString(buffer);
-
+		
 							threads.push_back(std::thread([this,iter,buffer] {AnswerQuestion(*iter,buffer); }));
-								//algorthimManagement->FindSolution();
-								////algorthimManagement->Start();
-
-								//sf::Packet sendToClient;
-								//sendToClient << algorthimManagement->ResultGenerations;
-								//sendToClient << algorthimManagement->ResultFitness;
-								//sendToClient << algorthimManagement->ResultString;
-								//socket->send(sendToClient);
-								//delete algorthimManagement;
-								
-							//}
+						
 							std::unique_lock<std::mutex> lock((*iter)->clientMutex);
 							std::cout << socket->getRemoteAddress().toString() << " " << buffer << std::endl;
 							lock.unlock();
@@ -131,7 +104,7 @@ void Server::ServerStuff()
 					}
 					else if (status == sf::Socket::Status::Error)
 					{
-						//			std::cout << "Confused" << std::endl;
+
 					}
 
 					if (deleted == false)
@@ -200,15 +173,5 @@ void Server::SendMessages()
 	std::cout << finalOutput;
 	std::this_thread::sleep_for(std::chrono::milliseconds(16));
 	
-	// Then clear it.
-	
-	//finalOutput = " ";
 
-	// Output it.
-	
-	
-	//std::cout << "Generation : " <<  << " Correct characters: " << Parents.at(0).Fitness / 10 << " Out of: " << DNASolution.size() << std::endl << "With Sequence : " << Parents.at(0).DNA.c_str() << std::endl;
-
-
-	//std::cout << "The client said: " << buffer << std::endl;
 }

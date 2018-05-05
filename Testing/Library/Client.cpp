@@ -51,6 +51,7 @@ void Client::getInput()
 	{
 				
 				std::cout << "Input a sentence for me to solve with genetic algorithims or type 'quit' to disconnect." << std::endl;
+				std::cout << "You may also type 'save' to save the string you last solved or 'load' to load the string last saved." << std::endl;
 				if (firstRun == false)
 				{
 					std::cin.ignore();
@@ -68,20 +69,27 @@ void Client::getInput()
 					std::ifstream loadFile{"Save.txt"};
 					std::string file_contents{ std::istreambuf_iterator<char>(loadFile), std::istreambuf_iterator<char>() };
 
-					std::cout << "File contained: " << file_contents << std::endl;
-
-					std::string response;
-					std::cout << "Use this string?" << std::endl;
-					getline(std::cin, response);
-
-					if (response == "Yes" || response == "yes")
+					if (file_contents.size() > 0)
 					{
-						SolutionDNA = file_contents;
-						sendClientRequest(sendMessage);
+						std::cout << "File contained: " << file_contents << std::endl;
+
+						std::string response;
+						std::cout << "Use this string?" << std::endl;
+						getline(std::cin, response);
+
+						if (response == "Yes" || response == "yes")
+						{
+							SolutionDNA = file_contents;
+							sendClientRequest(sendMessage);
+						}
+						else
+						{
+							continue;
+						}
 					}
 					else
 					{
-						continue;
+						std::cout << "There is no phrase currently saved on file. Please try after you have saved a phrase." << std::endl;
 					}
 				}
 				else if (SolutionDNA == "save")
@@ -94,6 +102,10 @@ void Client::getInput()
 						saveFile << stringToSave;
 
 						saveFile.close();
+					}
+					else
+					{
+						std::cout << "A string has not been solved yet. Please try to save after you have inputted a string to solve." << std::endl;
 					}
 				}
 				else
@@ -147,7 +159,7 @@ void Client::sendClientRequest(sf::Packet packet)
 
 
 			std::cout << "Generation : " << generations << " Highest Fitness : " << fitness << std::endl << "With Sequence : " << DNA << std::endl;
-			inputCompleted = false;
+			
 			SolutionDNA = " ";
 			stillConnected = true;
 			break;
