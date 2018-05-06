@@ -1,12 +1,11 @@
 #include "Client.h"
 #include <SFML/Network.hpp>
-//#include <../SFML-2.4.2/include/SFML/Network.hpp>
+
 #include <string>
 #include "Algorthims.h"
 
 
-///This
-//#include ""
+
 
 
 
@@ -33,8 +32,10 @@ int main()
 		{
 			if (newClient->stillConnected == true)
 			{
+				// If we are connected, get the user input.
 				newClient->getInput();
 			}
+			//if not, prompt them to be able to reconnect.
 			else
 			{
 				std::cout << "You are not connected anymore..." << std::endl;
@@ -58,34 +59,4 @@ int main()
 
 
 	return 0;
-}
-
-void EstablishConnection(bool validPort)
-{
-	
-	
-	//while (validPort == false)
-	//{
-	//	std::cout << "Please type in an IP to connect to. " << std::endl;
-	//	std::cin >> ip;
-	//	std::cout << "Insert a number between 1-5000 as the port to connect to." << std::endl;
-	//	std::cin >> SelectedPortNumber;
-
-	//	if (SelectedPortNumber > 1 || SelectedPortNumber < 5000)
-	//	{
-
-	//		if (newClient->ClientConnection(ip, SelectedPortNumber))
-	//		{
-	//			validPort = true;
-	//			std::cout << "Connected established." << std::endl;
-	//		}
-	//		else
-	//		{
-	//			std::cout << "Connection failed. Invalid Port.";
-	//		}
-
-	//	}
-
-	//}
-
 }
